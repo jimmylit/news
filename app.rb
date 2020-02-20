@@ -24,6 +24,7 @@ get "/news" do
 
   # Pass geo through the news api hh
 
+
   # display weather forecast
 
 end
