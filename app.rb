@@ -10,23 +10,33 @@ before { puts "Parameters: #{params}" }
 ForecastIO.api_key = "39d13212312667e287d10d692b2a4f66"
 
 get "/" do
-  view "ask"
-end
+   view "ask"
+ end
 
 get "/news" do
-  # take reslts from ask
-  location =  params["location"]
 
-  # Find geo location
-  geocoder.
-
+  # take results from ask and find geo location
+  
+  location = params["location"]
+  @results = Geocoder.search(params["location"])
+  lat_long = @results.first.coordinates
+  lat = lat_long[0]
+  lng = lat_long[1]
+  
   # Pass geo through Dark Sky
+  
+#   @forecast = ForecastIO.forecast(lat,lng)
+
+forecast = ForecastIO.forecast(lat, lng)
+
+@weather_warning =  forecast["alerts"][0]["description"]
 
   # Pass geo through the news api hh
 
 
   # display weather forecast
-  # something new
-  #hello hello
-
+ view "news"
 end
+
+ 
+ 
