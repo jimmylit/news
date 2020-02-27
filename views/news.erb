@@ -1,5 +1,19 @@
-<h1> "Weather alerts" </h1>
+<h1> Weather alerts </h1>
 
 <p> <%= @weather_warning %> </p>
 
-<hh1> <%= @temperature %> </p>
+<h1> Current conditions </h1>
+
+<p> In <%= @location %>, it is currently <%= @current_temperature %> with <%= @current_conditions %> </p>
+
+<h1> Daily Forecast </h1>
+
+<% for day in @forecast["daily"]["data"] %>
+<p> A high of <%= day["temperatureHigh"] %> 
+and <%= day["summary"].downcase %> </p>
+<% end %>
+
+<% for article in @news["articles"] %>
+    <p> <%= article["title"] %> </p>
+<% end %>
+
