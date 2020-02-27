@@ -25,11 +25,11 @@ get "/news" do
   
   # Pass geo through Dark Sky
   
-#   @forecast = ForecastIO.forecast(lat,lng)
-
 forecast = ForecastIO.forecast(lat, lng)
 
 @weather_warning =  forecast["alerts"][0]["description"]
+
+@weather_today = forecast
 
   # Pass geo through the news api hh
 
